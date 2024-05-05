@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>store</title>
+    <link rel="stylesheet" href="./styles.css"/>
+  </head>
+  <body>
+    <div >
+      <div class="card">
+     
+      </div>
+        <button class="btn" type="button" id="checkout">
+          <strong>PAY</strong>
+          <div id="container-stars">
+            <div id="stars"></div>
+          </div>
+        
+          <div id="glow">
+            <div class="circle"></div>
+            <div class="circle"></div>
+          </div></button>
+    </div>
+    <script>
+      const ckeckout = document.getElementById('checkout')
+      ckeckout.addEventListener('click', async() =>{
+          const response = await fetch('/create-order',{
+              method: 'POST'
+          });
+          const data = await response.json()
+          console.log(data)
+          window.location.href = data.init_point ; //redirecciona a la pagina que devuelve el json ene el elemento init_point
+      });
+    </script>
+  </body>
+</html>
